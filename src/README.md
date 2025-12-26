@@ -63,20 +63,23 @@ Keras (.keras) → ONNX (.onnx) → TensorRT (.engine)
 - 支援 MediaPipe 人臉偵測，自動裁切臉部區域
 - 可調整偵測閾值與臉部邊界框擴展比例
 
-### 使用方式
+### 使用方式(jetson orin nano 上操作)
+
+- 專案路徑: ~/final_proj
+- 
 
 ```bash
-# 基本使用（整張畫面）
-python inference.py --engine model.engine --source 0
+# 基本使用(整張畫面)
+sudo python inference_fullface.py --engine=/home/first/final_proj/engine/anger_model1224_0022
 
-# 啟用人臉偵測
-python inference.py --engine model.engine --source 0 --face-detect
+# 啟用人臉偵測(基本上用這個)
+sudo python inference_fullface.py --engine=/home/first/final_proj/engine/anger_model1224_0022 --face-detect
 
 # 自訂參數
-python inference.py --engine model.engine \
+sudo python inference_fullface.py --engine=/home/first/final_proj/engine/anger_model1224_0022 \
     --source 0 \
     --face-detect \
-    --threshold 0.4 \
+    --threshold 0.2 \
     --face-confidence 0.5 \
     --face-margin 0.3
 ```
